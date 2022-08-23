@@ -25,8 +25,9 @@ Feature: Realizar una donacion
   Scenario Outline:  Usuario selecciona un monto <btn_monto> a donar
 
     When selecciono la primera ONG del listado
-    And hago click en el boton <btn_monto> a donar
-    Then se muestra el mensaje <mensaje>
+    #And hago click en el boton <btn_monto> a donar
+    #Then se muestra el mensaje <mensaje>
+    Then al hacer click en el boton <btn_monto> se muestra el mensaje <mensaje>
 
     Examples:
       | btn_monto | mensaje                        |
@@ -39,8 +40,8 @@ Feature: Realizar una donacion
   Scenario Outline:  Usuario realiza una donacion
 
     When selecciono la primera ONG del listado
-    And hago click en el boton <btn_monto> a donar
-    And se muestra el mensaje <mensaje>
+    #And hago click en el boton <btn_monto> a donar
+    #And se muestra el mensaje <mensaje>
     And hago click en el boton "Donar"
     Then el usuario se redirige a pantalla de pago
 
@@ -55,8 +56,9 @@ Feature: Realizar una donacion
   Scenario Outline:  El usuario valida el funcionamiento de boton "Atras"
 
     When selecciono la primera ONG del listado
-    And hago click en el boton <btn_monto> a donar
-    And se muestra el mensaje <mensaje>
+    #And hago click en el boton <btn_monto> a donar
+    #And se muestra el mensaje <mensaje>
+    Then al hacer click en el boton <btn_monto> se muestra el mensaje <mensaje>
     And hago click en el boton "Atras"
     Then el usuario se redirige a pantalla landing
 

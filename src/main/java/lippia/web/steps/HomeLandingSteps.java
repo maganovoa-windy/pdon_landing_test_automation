@@ -28,20 +28,22 @@ public class HomeLandingSteps extends PageSteps {
         HomeLandingService.verificoNuevaPantalla();
     }
 
-//    @And("hago click en el boton (.*) a donar")
-//    public void hagoClickEnElBotonBtn_montoADonar(String monto) {
-//        HomeLandingService.seleccionMonto(monto);
-//    }
-
-//    @Then("se muestra el mensaje (.*)")
-//    public void seMuestraElMensajeMensaje(String mensaje) {
-//        HomeLandingService.verificarMensaje(mensaje);
-//    }
 
     @Then("al hacer click en el boton (.*) se muestra el mensaje (.*)")
     public void alHacerClickEnElBotonBtn_montoSeMuestraElMensajeMensaje(String monto , String mensaje) {
         HomeLandingService.seleccionMonto(monto);
         HomeLandingService.verificarMensaje(monto , mensaje);
+    }
+
+
+    @And("^hago click en el boton \"(.*)\"$")
+    public void hagoClickEnElBoton(String boton) {
+        HomeLandingService.clickBoton(boton);
+    }
+
+    @Then("el usuario se redirige a pantalla landing")
+    public void elUsuarioSeRedirigeAPantallaLanding() {
+        HomeLandingService.verificoTituloHome();
     }
 }
 

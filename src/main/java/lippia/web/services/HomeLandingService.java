@@ -3,8 +3,14 @@ package lippia.web.services;
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
 import lippia.web.constants.HomeLandingConstants;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.crowdar.core.actions.WebActionManager.deselectDropdownByValue;
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
 
 public class HomeLandingService extends ActionManager {
@@ -32,28 +38,30 @@ public class HomeLandingService extends ActionManager {
     public static void seleccionMonto(String monto) {
         switch (monto) {
             case "$1":
-                waitClickable(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "0");
-                click(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "0");
-                break;
+                    WaitAndClick("1");
+                    break;
             case "$5":
-                waitClickable(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "1");
-                click(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "1");
-                break;
+                    WaitAndClick("2");
+                    break;
             case "$10":
-                waitClickable(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "2");
-                click(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "2");
-                break;
+                    WaitAndClick("3");
+                    break;
             case "$15":
-                waitClickable(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "3");
-                click(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, "3");
-                break;
+                    WaitAndClick("4");
+                    break;
         }
     }
 
+    public static void WaitAndClick(String indice){
+        String xpath = String.format(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, Integer.parseInt(indice));
+        waitClickable(xpath);
+        click(xpath);
+    }
 
     public static void verificarMensaje(String monto , String mensaje) {
+        System.out.println(getText(HomeLandingConstants.H3_PLATOS_XPATH));
         switch(monto){
-            case "$1":  Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH) , mensaje);
+            case "$1":  Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
                         break;
             case "$5":  Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
                         break;
@@ -63,5 +71,21 @@ public class HomeLandingService extends ActionManager {
                         break;
         }
     }
+
+    public static void clickBoton(String boton) {
+        seleccionarBoton(boton);
+    }
+
+    public static void seleccionarBoton(String boton){
+        switch(boton){
+            case "Atras":waitClickable(HomeLandingConstants.BOTON_ATRAS_XPATH);
+                         click(HomeLandingConstants.BOTON_ATRAS_XPATH);
+                         break;
+            case "Donar":waitClickable(HomeLandingConstants.BOTON_DONAR_XPATH);
+                         click(HomeLandingConstants.BOTON_DONAR_XPATH);
+                         break;
+        }
+    }
+
 }
 
