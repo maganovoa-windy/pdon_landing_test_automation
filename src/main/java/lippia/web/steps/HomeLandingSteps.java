@@ -14,8 +14,8 @@ public class HomeLandingSteps extends PageSteps {
         HomeLandingService.navegarWeb();
     }
 
-    @Then("se verifica el correcto ingresoa la pantalla de donaciones")
-    public void seVerificaElCorrectoIngresoaLaPantallaDeDonaciones() {
+    @Then("se verifica el correcto ingreso la pantalla de donaciones")
+    public void seVerificaElCorrectoIngresoLaPantallaDeDonaciones() {
         HomeLandingService.verificoTituloHome();
     }
 
