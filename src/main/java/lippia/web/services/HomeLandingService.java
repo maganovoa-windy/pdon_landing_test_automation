@@ -10,10 +10,9 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.crowdar.core.actions.WebActionManager.deselectDropdownByValue;
-import static com.crowdar.core.actions.WebActionManager.navigateTo;
+import static com.crowdar.core.actions.WebActionManager.*;
 
-public class HomeLandingService extends ActionManager {
+public class HomeLandingService extends WebActionManager {
 
     public static void navegarWeb(){
         navigateTo(PropertyManager.getProperty("web.base.url"));
@@ -21,12 +20,14 @@ public class HomeLandingService extends ActionManager {
 
     public static void verificoTituloHome(){
         ActionManager.waitVisibility(HomeLandingConstants.TITULO_PRINCIPAL);
+        WebActionManager.scroll(HomeLandingConstants.TITULO_PRINCIPAL);
         Assert.assertTrue(ActionManager.isPresent(HomeLandingConstants.TITULO_PRINCIPAL));
     }
 
     public static void seleccionarOng() {
         waitPresence(HomeLandingConstants.BOTON_BANCO_DE_ALIMENTOS_PARAGUAY_XPATH);
         click(HomeLandingConstants.BOTON_BANCO_DE_ALIMENTOS_PARAGUAY_XPATH);
+
     }
 
 
@@ -37,18 +38,18 @@ public class HomeLandingService extends ActionManager {
 
     public static void seleccionMonto(String monto) {
         switch (monto) {
-            case "$1":
+            case "$70":
                     WaitAndClick("1");
                     break;
-            case "$5":
+            case "$140":
                     WaitAndClick("2");
                     break;
-            case "$10":
+            case "$350":
                     WaitAndClick("3");
                     break;
-            case "$15":
-                    WaitAndClick("4");
-                    break;
+//            case "$15":
+//                    WaitAndClick("4");
+//                    break;
         }
     }
 
