@@ -18,8 +18,9 @@ Feature: Realizar una donacion
       | pais      |
       | Argentina |
       | Chile     |
-      | Colombia  |
       | Uruguay   |
+      | Paraguay  |
+      | Bolivia   |
 
 
   Scenario Outline:  Usuario selecciona un monto <btn_monto> a donar

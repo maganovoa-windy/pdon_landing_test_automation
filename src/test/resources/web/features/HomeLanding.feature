@@ -20,13 +20,13 @@ Feature: Como usuario quiero dirigirme a la pantalla de Donaciones de PedidosYa
     Then al hacer click en el boton <btn_monto> se muestra el mensaje <mensaje>
 
     Examples:
-      | btn_monto | mensaje                        |
-      | $1        | Equivale a 3 platos de comida  |
-      | $5        | Equivale a 15 platos de comida |
-      | $10       | Equivale a 30 platos de comida |
-      | $15       | Equivale a 45 platos de comida |
+      | btn_monto | mensaje                                           |
+      | $70       | Equivale a 2 platos de comida para un estudiante  |
+      | $140      | Equivale a 4 platos de comida para un estudiante  |
+      | $350      | Equivale a 10 platos de comida para un estudiante |
 
-  @Caso-nro4
+
+  @Caso-nro4 @Ale
   Scenario Outline:  El usuario valida el funcionamiento de boton "Atras"
     When selecciono la primera ONG del listado
     Then al hacer click en el boton <btn_monto> se muestra el mensaje <mensaje>
@@ -34,8 +34,7 @@ Feature: Como usuario quiero dirigirme a la pantalla de Donaciones de PedidosYa
     Then el usuario se redirige a pantalla landing
 
     Examples:
-      | btn_monto | mensaje                       |
-      | $1        | Equivale a 3 platos de comida |
-      | $5        | Equivale a 15 platos de comida |
-      | $10       | Equivale a 30 platos de comida |
-      | $15       | Equivale a 45 platos de comida |
+      | btn_monto | mensaje                                           |
+      | $70       | Equivale a 2 platos de comida para un estudiante  |
+      | $140      | Equivale a 4 platos de comida para un estudiante  |
+      | $350      | Equivale a 10 platos de comida para un estudiante |
