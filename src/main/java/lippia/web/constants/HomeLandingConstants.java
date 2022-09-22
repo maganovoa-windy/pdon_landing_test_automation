@@ -6,8 +6,10 @@ public class HomeLandingConstants {
     public static final String BOTON_BANCO_DE_ALIMENTOS_PARAGUAY_XPATH = "xpath://div[@class=\"StyledCard-sc-e3q32v-0 Fluby\"]";
     public static final String BOTON_DONAR_XPATH = "xpath://button[@class=\"StyledDonationBtn-sc-1jpf6qt-0 dmagrq SimpleButton__StyledButton-sc-tto1dw-0 wpykx\"]";
     public static final String BOTON_MONTO_A_DONAR_XPATH= "xpath://div[@class='StyledGrid-sc-14vi1gz-0 iySZfY']//button[%s]";
-    public static final String H3_PLATOS_XPATH = "xpath://p[contains(text(),'Equivale a')]";
+    public static final String H3_PLATOS_XPATH = "xpath://p[@class=\"StyledMsgEquivalence-sc-d0biag-0 caPdKH\"]";
     public static final String BOTON_ATRAS_XPATH = "xpath://*[local-name() = 'svg']";
+
+
 
 
 
