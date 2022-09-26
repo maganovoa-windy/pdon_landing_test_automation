@@ -124,8 +124,8 @@ public class HomeLandingService extends WebActionManager {
             case "Apoya el Banco de Alimentos":
             case "Colabora con Canastas UY":
             case "Ayuda a niños y niñas de bolivia":
-                waitPresence(HomeLandingConstants.BOTON_BANCO_DE_ALIMENTOS_PARAGUAY_XPATH);
-                click(HomeLandingConstants.BOTON_BANCO_DE_ALIMENTOS_PARAGUAY_XPATH);
+                waitPresence(HomeLandingConstants.BOTON_ONG_XPATH);
+                click(HomeLandingConstants.BOTON_ONG_XPATH);
                 break;
         }
     }
@@ -197,6 +197,19 @@ public class HomeLandingService extends WebActionManager {
                 break;
 
         }
+    }
+
+    public static void validarIngresoOng(String tituloPantalla) {
+        Assert.assertEquals(getText(HomeLandingConstants.H1_DONAR_XPATH, tituloPantalla), tituloPantalla);
+    }
+
+    public static void clickPrimeraOng() {
+        waitPresence(HomeLandingConstants.BOTON_ONG_XPATH);
+        click(HomeLandingConstants.BOTON_ONG_XPATH);
+    }
+
+    public static void validarPantallaPrincipal() {
+        Assert.assertEquals(getText(HomeLandingConstants.H2_DONAR_XPATH) , "Elige en qué ONG colaborar");
     }
 }
 

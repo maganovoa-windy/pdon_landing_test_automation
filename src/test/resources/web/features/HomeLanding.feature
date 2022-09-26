@@ -1,9 +1,6 @@
-Feature: Como usuario quiero dirigirme a la pantalla de Donaciones de PedidosYa
-
-#  Background:
-#    Given el usuario ingresa en la pantalla de donaciones
-
-
+# modifique titulo del feature
+Feature: Como usuario de Pedidos Ya quiero dirigirme a la pantalla de Donaciones
+  @Caso-IngresoExitoso
   Scenario Outline: ingreso exitoso a la pantalla de donaciones con diferentes paises
     Given el usuario ingresa en la pantalla de donaciones del pais <pais>
     When ingreso a la landing
@@ -17,43 +14,23 @@ Feature: Como usuario quiero dirigirme a la pantalla de Donaciones de PedidosYa
       | Paraguay  |
       | Bolivia   |
 
-
-  Scenario: seleccion de ONG exitosa
-    Given el usuario ingresa en la pantalla de donaciones
-    When selecciono la primera ONG del listado
-    Then me redirijo a nueva pantalla
-
-
-  Scenario Outline: Mensaje exitoso al seleccion importe <btn_monto>
-    Given el usuario ingresa en la pantalla de donaciones
-    When selecciono la primera ONG del listado
-    And se hace click en el boton <btn_monto>
-    Then se muestra el mensaje <mensaje> asociado al importe boton <btn_monto>
-    #Then al hacer click en el boton <btn_monto> se muestra el mensaje <mensaje>
+  @Caso-OngExitosa
+  Scenario Outline: Seleccion de ONG exitosa
+    Given el usuario ingresa en la pantalla de donaciones del pais <pais>
+    When hace click en la primera <ONG> del listado
+    Then al hacer click en el boton ONG se visualiza una nueva <pantalla>
 
     Examples:
-      | btn_monto | mensaje                                           |
-      | $70       | Equivale a 2 platos de comida para un estudiante  |
-      | $140      | Equivale a 4 platos de comida para un estudiante  |
-      | $350      | Equivale a 10 platos de comida para un estudiante |
+      | pais        	| ONG								|pantalla				|
+      | Argentina   	|Colabora con la Fundacion Si		|Ayudemos Juntos		|
+      |	Bolivia			|Ayuda a niños y niñas de bolivia	|EntregamosSonrisas	|
+      |	Uruguay			|Colabora con Canastas UY			|Canastas UY			|
+      |	Paraguay		|Apoya el Banco de Alimentos 		|Dona alimentos			|
 
 
-  Scenario: Navegacion con boton "Atras" exitosa
-    Given el usuario ingresa en la pantalla de donaciones
-    When selecciono la primera ONG del listado
-    And hago click en el boton "Atras"
-    Then el usuario se redirige a pantalla landing
-
-
-  Scenario: Funcionamiento del boton donar exitoso
-    Given el usuario ingresa en la pantalla de donaciones
-    When selecciono la primera ONG del listado
-    And hace click en el boton "$70"
-    And hace click en el boton "Donar"
-    Then Se visualiza que el usuario fue redirigido a la pantalla <pantalla>
 
   @Caso-integracionDeEscenarios @Ale
-  Scenario Outline: Ingreso exitoso a la pantalla donaciones con diferentes paises
+  Scenario Outline: Mensaje exitoso al seleccionar el importe con el boton "btn_monto"
     Given el usuario ingresa en la pantalla de donaciones del pais <pais>
     When hace click en la primera <ONG> del listado
     And hace click en el boton <btn_monto>
@@ -75,27 +52,28 @@ Feature: Como usuario quiero dirigirme a la pantalla de Donaciones de PedidosYa
       | Bolivia   | Ayuda a niños y niñas de bolivia | Bs. 12    | Contribuye con tres platos de comida.              |
 
 
+  @Caso-BotonAtras
+  Scenario: Navegacion con boton "Atras" exitosa
+    Given el usuario ingresa en la pantalla de donaciones
+    When selecciono la primera ONG del listado
+    And hago click en el boton "Atras"
+    Then el usuario se redirige a pantalla principal
 
-
-
-
-
-
-
-
-
-  #Cuando se ingresa a las donaciones del pais X
-
-
-#  Scenario Outline: Usuario valida las ONG de la consulta segun pais <pais>
+  @Caso-BotonDonar
+  Scenario: Funcionamiento del boton "Donar" exitoso
+    Given el usuario ingresa en la pantalla de donaciones
+    When selecciono la primera ONG del listado
+    And hace click en el boton "$70"
+    And hace click en el boton "Donar"
+    Then Se visualiza que el usuario fue redirigido a la pantalla <pantalla>
 #
-#    When se ingresa al flujo desde el pais <pais>
-#    Then se listan las ONG correspondientes
-#
-#    Examples:
-#      | pais      |
-#      | Argentina |
-#      | Chile     |
-#      | Uruguay   |
-#      | Paraguay  |
-#      | Bolivia   |
+
+
+
+
+
+
+
+
+
+
