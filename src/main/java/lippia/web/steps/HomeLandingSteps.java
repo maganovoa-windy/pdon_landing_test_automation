@@ -14,20 +14,20 @@ public class HomeLandingSteps extends PageSteps {
     public void elUsuarioIngresaEnLaPantallaDeDonaciones() {
         HomeLandingService.navegarWeb();
     }
-
-    @Then("se verifica el correcto ingreso la pantalla de donaciones")
-    public void seVerificaElCorrectoIngresoLaPantallaDeDonaciones() {
-        HomeLandingService.verificoTituloHome();
-    }
+//
+//    @Then("se verifica el correcto ingreso la pantalla de donaciones")
+//    public void seVerificaElCorrectoIngresoLaPantallaDeDonaciones() {
+//        HomeLandingService.verificoTituloHome();
+//    }
 
 //    @When("selecciono la primera ONG del listado")
 //    public void seleccionoLaPrimeraONGDelListado() {
 //        HomeLandingService.seleccionarOng();
 //    }
-    @Then("me redirijo a nueva pantalla")
-    public void meRedirijoANuevaPantalla() {
-        HomeLandingService.verificoNuevaPantalla();
-    }
+//    @Then("me redirijo a nueva pantalla")
+//    public void meRedirijoANuevaPantalla() {
+//        HomeLandingService.verificoNuevaPantalla();
+//    }
 
 //
 //    @Then("al hacer click en el boton (.*) se muestra el mensaje (.*)")
@@ -42,10 +42,10 @@ public class HomeLandingSteps extends PageSteps {
         HomeLandingService.clickBoton(boton);
     }
 
-    @Then("el usuario se redirige a pantalla landing")
-    public void elUsuarioSeRedirigeAPantallaLanding() {
-        HomeLandingService.verificoTituloHome();
-    }
+//    @Then("el usuario se redirige a pantalla landing")
+//    public void elUsuarioSeRedirigeAPantallaLanding() {
+//        HomeLandingService.verificoTituloHome();
+//    }
 
     //NUEVO ESCENARIO//
 
@@ -84,6 +84,16 @@ public class HomeLandingSteps extends PageSteps {
     @Then("el usuario se redirige a pantalla principal")
     public void elUsuarioSeRedirigeAPantallaPrincipal() {
         HomeLandingService.validarPantallaPrincipal();
+    }
+
+    @Then("accedo a la pantalla dona un plato de comida")
+    public void accedoALaPantallaDonaUnPlatoDeComida() {
+        HomeLandingService.validarPantallaPrincipal();
+    }
+
+    @When("el usuario ingresa al pais (.*)")
+    public void elUsuarioIngresaAlPaisPais(String pais) {
+        HomeLandingService.navegarWebPorPais(HomeLandingService.EvaluarPais(pais));
     }
 }
 

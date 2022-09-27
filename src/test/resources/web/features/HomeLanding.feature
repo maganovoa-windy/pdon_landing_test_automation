@@ -1,20 +1,19 @@
 # modifique titulo del feature
 Feature: Como usuario de Pedidos Ya quiero dirigirme a la pantalla de Donaciones
-  @Caso-IngresoExitoso
+  @Caso-IngresoExitoso @Ale
   Scenario Outline: ingreso exitoso a la pantalla de donaciones con diferentes paises
-    Given el usuario ingresa en la pantalla de donaciones del pais <pais>
-    When ingreso a la landing
+    Given el usuario ingresa en la pantalla de donaciones
+    When el usuario ingresa al pais <pais>
     Then accedo a la pantalla dona un plato de comida
 
     Examples:
       | pais      |
       | Argentina |
-      | Chile     |
       | Uruguay   |
       | Paraguay  |
       | Bolivia   |
 
-  @Caso-OngExitosa
+  @Caso-OngExitosa @Ale
   Scenario Outline: Seleccion de ONG exitosa
     Given el usuario ingresa en la pantalla de donaciones del pais <pais>
     When hace click en la primera <ONG> del listado
@@ -52,7 +51,7 @@ Feature: Como usuario de Pedidos Ya quiero dirigirme a la pantalla de Donaciones
       | Bolivia   | Ayuda a niños y niñas de bolivia | Bs. 12    | Contribuye con tres platos de comida.              |
 
 
-  @Caso-BotonAtras
+  @Caso-BotonAtras @Ale
   Scenario: Navegacion con boton "Atras" exitosa
     Given el usuario ingresa en la pantalla de donaciones
     When selecciono la primera ONG del listado
