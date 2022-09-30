@@ -65,9 +65,9 @@ public class HomeLandingSteps extends PageSteps {
         HomeLandingService.clickBotonMonto(botonMonto);
     }
 
-    @Then("se visualiza el (.*) asociado al importe del boton (.*)")
-    public void seVisualizaElMensajeAsociadoAlImporteDelBoton(String mensaje , String monto) {
-        HomeLandingService.validarMensaje(mensaje , monto);
+    @Then("se visualiza el (.*) asociado al importe del boton monto")
+    public void seVisualizaElMensajeAsociadoAlImporteDelBoton(String mensaje) {
+        HomeLandingService.validarMensaje(mensaje);
     }
 
     @Then("al hacer click en el boton ONG se visualiza una nueva (.*)")

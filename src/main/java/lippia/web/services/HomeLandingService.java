@@ -16,65 +16,16 @@ import static com.crowdar.core.actions.WebActionManager.*;
 public class HomeLandingService extends WebActionManager {
 
 
-//
-//    public static void verificoTituloHome() {
-//        ActionManager.waitVisibility(HomeLandingConstants.TITULO_PRINCIPAL);
-//        WebActionManager.scroll(HomeLandingConstants.TITULO_PRINCIPAL);
-//        Assert.assertTrue(ActionManager.isPresent(HomeLandingConstants.TITULO_PRINCIPAL));
-//    }
-
-
-//    public static void verificoNuevaPantalla() {
-//        waitPresence(HomeLandingConstants.BOTON_DONAR_XPATH);
-//        Assert.assertTrue(isPresent(HomeLandingConstants.BOTON_DONAR_XPATH));
-//    }
-
-//    public static void seleccionMonto(String monto) {
-//        switch (monto) {
-//            case "$70":
-//                WaitAndClick("1");
-//                break;
-//            case "$140":
-//                WaitAndClick("2");
-//                break;
-//            case "$350":
-//                WaitAndClick("3");
-//                break;
-////            case "$15":
-////                    WaitAndClick("4");
-////                    break;
-//        }
-//    }
-
-
-//
-//    public static void verificarMensaje(String monto, String mensaje) {
-//        System.out.println(getText(HomeLandingConstants.H3_PLATOS_XPATH));
-//        switch (monto) {
-//            case "$1":
-//                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-//                break;
-//            case "$5":
-//                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-//                break;
-//            case "$10":
-//                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-//                break;
-//            case "$15":
-//                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-//                break;
-//        }
-//    }
-
 
 
     //METODOS DEL ESCENARIO NUEVO//
 
-//METODO QUE REALIZA INGRESO A BASE URL ARG
+    //METODO QUE REALIZA INGRESO A BASE URL ARG
     public static void navegarWeb() {
         navigateTo(PropertyManager.getProperty("web.base.url"));
     }
-//ENTRAR A LANDING POR PAIS
+
+    //ENTRAR A LANDING POR PAIS
     public static String EvaluarPais(String pais) {
         String valorPais;
         switch (pais) {
@@ -101,106 +52,49 @@ public class HomeLandingService extends WebActionManager {
         navigateTo(("https://stg-web-apps.pedidosya.com/checkout-webview/donations?c=." + valorPais));
 
     }
-//SELECCIONAR ONG ENVIADA POR PARAMETRO
+
+    //SELECCIONAR ONG ENVIADA POR PARAMETRO
     public static void seleccionarOng(String ong) {
-        switch (ong) {
-            case "Colabora con la Fundacion Si":
-            case "Apoya el Banco de Alimentos":
-            case "Colabora con Canastas UY":
-            case "Ayuda a niños y niñas de bolivia":
-                waitPresence(HomeLandingConstants.BOTON_ONG_XPATH);
-                click(HomeLandingConstants.BOTON_ONG_XPATH);
-                break;
-        }
+        waitClickable(HomeLandingConstants.BOTON_ONG_XPATH,ong);
+        click(HomeLandingConstants.BOTON_ONG_XPATH,ong);
     }
 
-//METODO PARA SELECCIONAR MONTO A DONAR
+    //METODO PARA SELECCIONAR MONTO A DONAR
     public static void WaitAndClick(String indice) {
-        String xpath = String.format(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, Integer.parseInt(indice));
+        String xpath = String.format(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, indice);
+        scroll(xpath);
         waitClickable(xpath);
         click(xpath);
     }
 
     public static void clickBotonMonto(String botonMonto) {
-        switch (botonMonto) {
-            case "$70":
-            case "Gs 2500":
-            case "$15":
-            case "Bs. 4":
-                WaitAndClick("1");
-                break;
-            case "$140":
-            case "Gs 5000":
-            case "$30":
-            case "Bs. 8":
-                WaitAndClick("2");
-                break;
-            case "$350":
-            case "Gs 7500":
-            case "$45":
-            case "Bs. 12":
-                WaitAndClick("3");
-                break;
-
-        }
+        WaitAndClick(botonMonto);
     }
 
-//METODO PARA VALIDAR MENSAJE CORRESPONDIENTE AL MONTO A DONAR
-    public static void validarMensaje(String mensaje, String monto) {
-        switch (monto) {
-            case "$70":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "Gs 2500":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "$15":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "Bs. 4":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "$140":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "Gs 5000":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "$30":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "Bs. 8":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "$350":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "Gs 7500":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "$45":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
-            case "Bs. 12":
-                Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
-                break;
 
-        }
+    //METODO PARA VALIDAR MENSAJE CORRESPONDIENTE AL MONTO A DONAR
+    public static void validarMensaje(String mensaje) {
+        Assert.assertEquals(getText(HomeLandingConstants.H3_PLATOS_XPATH), mensaje);
     }
-//VALIDAR INGRESO A LA ONG
+
+
+    //VALIDAR INGRESO A LA ONG
     public static void validarIngresoOng(String tituloPantalla) {
         Assert.assertEquals(getText(HomeLandingConstants.H1_DONAR_XPATH, tituloPantalla), tituloPantalla);
     }
-//CLICK AL BOTON DE LA PRIMERA ONG
+
+    //CLICK AL BOTON DE LA PRIMERA ONG
     public static void clickPrimeraOng() {
-        waitPresence(HomeLandingConstants.BOTON_ONG_XPATH);
-        click(HomeLandingConstants.BOTON_ONG_XPATH);
+        waitPresence(HomeLandingConstants.BOTON_ONG_XPATH , "Colaborá con la Fundación Sí");
+        click(HomeLandingConstants.BOTON_ONG_XPATH , "Colaborá con la Fundación Sí");
     }
-//VALIDAR INGRESO A LA LANDING
+
+    //VALIDAR INGRESO A LA LANDING
     public static void validarPantallaPrincipal() {
-        Assert.assertEquals(getText(HomeLandingConstants.H2_DONAR_XPATH) , "Elige en qué ONG colaborar");
+        Assert.assertEquals(getText(HomeLandingConstants.H2_DONAR_XPATH), "Elige en qué ONG colaborar");
     }
-//CLICK A BOTON ESPECIFICO ENVIADO POR PARAMETRO
+
+    //CLICK A BOTON ESPECIFICO ENVIADO POR PARAMETRO
     public static void clickBoton(String boton) {
         seleccionarBoton(boton);
     }
