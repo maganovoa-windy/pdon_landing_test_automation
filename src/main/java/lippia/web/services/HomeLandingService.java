@@ -1,21 +1,12 @@
 package lippia.web.services;
 
 import com.crowdar.core.PropertyManager;
-import com.crowdar.core.actions.ActionManager;
 import lippia.web.constants.HomeLandingConstants;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import static com.crowdar.core.actions.WebActionManager.*;
 
+
 public class HomeLandingService extends WebActionManager {
-
-
 
 
     //METODOS DEL ESCENARIO NUEVO//
@@ -55,14 +46,13 @@ public class HomeLandingService extends WebActionManager {
 
     //SELECCIONAR ONG ENVIADA POR PARAMETRO
     public static void seleccionarOng(String ong) {
-        waitClickable(HomeLandingConstants.BOTON_ONG_XPATH,ong);
-        click(HomeLandingConstants.BOTON_ONG_XPATH,ong);
+        waitClickable(HomeLandingConstants.BOTON_ONG_XPATH, ong);
+        click(HomeLandingConstants.BOTON_ONG_XPATH, ong);
     }
 
     //METODO PARA SELECCIONAR MONTO A DONAR
     public static void WaitAndClick(String indice) {
         String xpath = String.format(HomeLandingConstants.BOTON_MONTO_A_DONAR_XPATH, indice);
-        scroll(xpath);
         waitClickable(xpath);
         click(xpath);
     }
@@ -85,8 +75,8 @@ public class HomeLandingService extends WebActionManager {
 
     //CLICK AL BOTON DE LA PRIMERA ONG
     public static void clickPrimeraOng() {
-        waitPresence(HomeLandingConstants.BOTON_ONG_XPATH , "Colaborá con la Fundación Sí");
-        click(HomeLandingConstants.BOTON_ONG_XPATH , "Colaborá con la Fundación Sí");
+        waitPresence(HomeLandingConstants.BOTON_ONG_XPATH, "Colaborá con la Fundación Sí");
+        click(HomeLandingConstants.BOTON_ONG_XPATH, "Colaborá con la Fundación Sí");
     }
 
     //VALIDAR INGRESO A LA LANDING
