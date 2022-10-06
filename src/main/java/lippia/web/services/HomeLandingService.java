@@ -32,6 +32,41 @@ public class HomeLandingService extends WebActionManager {
             case "Bolivia":
                 valorPais = "bo";
                 break;
+            case "Chile":
+                valorPais = "cl";
+                break;
+            case "República Dominicana":
+                valorPais = "do";
+                break;
+            case "Perú":
+                valorPais = "pe";
+                break;
+            case "Panamá":
+                valorPais = "pa";
+                break;
+            case "Costa Rica":
+                valorPais = "cr";
+                break;
+            case "Guatemala":
+                valorPais = "gt";
+                break;
+            case "El Salvador":
+                valorPais = "sv";
+                break;
+            case "Venezuela":
+                valorPais = "ve";
+                break;
+            case "Ecuador":
+                valorPais = "ec";
+                break;
+            case "Nicaragua":
+                valorPais = "ni";
+                break;
+            case "Honduras":
+                valorPais = "hn";
+                break;
+
+
 
             default:
                 throw new IllegalStateException("Unexpected value: " + pais);
